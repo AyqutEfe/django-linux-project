@@ -8,6 +8,10 @@ pip install -r requirements.txt
 
 python manage.py migrate
 
-collectstatic
+python manage.py collectstatic
 
-sudo systemctl restart gunicorn
+pkill gunicorn
+
+gunicorn core.wsgi:application --bind 127.0.0.1:8000 --daemon
+
+sudo systemctl restart nginx
