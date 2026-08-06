@@ -17,7 +17,7 @@ services:
             start_period: 10s
     web:
         container_name: django-web
-        image: django-environment:latest
+        image: django-multistage:latest
         build: .
         env_file:
             - .env

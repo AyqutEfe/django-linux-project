@@ -1,40 +1,13 @@
-# Git
-.git/
+.git
 .gitignore
-
-# Virtual Environments
-venv/
-.venv/
-env/
-
-# Python Cache
-__pycache__/
+.env
+venv
+.venv
+__pycache__
 *.pyc
 *.pyo
-*.pyd
-
-# Environment & Secret Files
-.env
-.env.*
-
-# Local Database & Media/Static Assets
-db.sqlite3
-*.sqlite3
-staticfiles/
-media/
-
-# IDE & Editor Files
-.vscode/
-.idea/
-.DS_Store
-
-# Documentation & Docker files (not needed inside container build context)
-README.md
+.pytest_cache
+.coverage
+node_modules
 Dockerfile
 docker-compose.yml
-docker-compose*.yml
-deploy.sh
-
-# Logs & Temporary Files
-*.log
-logs/

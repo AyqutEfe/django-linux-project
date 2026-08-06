@@ -1,22 +1,60 @@
-FROM python:3.11-slim
+
+FROM node:20-alpine AS frontend-builder
 
 WORKDIR /app
 
-ENV PYTHONDONTWRITEBYTECODE=1
-ENV PYTHONUNBUFFERED=1
+COPY frontend/package.json ./frontend/
 
-RUN pip install --upgrade pip
+WORKDIR /app/frontend
 
-COPY requirements.txt /app/
-RUN pip install --no-cache-dir -r requirements.txt
+RUN npm run build
 
-COPY . /app/
 
-RUN useradd --create-home django-user
 
-RUN chown -R django-user:django-user /app
+FROM python:3.11-alpine AS backend-builder
 
-USER django-user
+WORKDIR /usr/src/app
+
+RUN apk add --no-cache \
+    gcc \
+    musl-dev \
+    postgresql-dev \
+    libffi-dev
+
+COPY requirements.txt .
+
+RUN pip wheel \
+    --no-cache-dir \
+    --no-deps \
+    --wheel-dir /usr/src/app/wheels \
+    -r requirements.txt
+
+
+
+FROM python:3.11-alpine AS runtime
+
+WORKDIR /app
+
+RUN apk add --no-cache \
+    libpq \
+    libffi
+
+COPY --from=backend-builder /usr/src/app/wheels /wheels
+
+RUN pip install --no-cache /wheels/* \
+    && rm -rf /wheels
+
+COPY . .
+
+COPY --from=frontend-builder /app/frontend/dist /app/static
+
+
+RUN addgroup -S django \
+    && adduser -S django -G django \
+    && mkdir -p /app/staticfiles \
+    && chown -R django:django /app
+
+USER django
 
 EXPOSE 8000
 
