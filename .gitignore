@@ -15,7 +15,7 @@ media/
 
 # Environment Variables
 .env
-.env.*
+.env
 
 # IDE & Editor Settings
 .vscode/
