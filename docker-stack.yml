@@ -1,0 +1,105 @@
+services:
+    db:
+        image: postgres:16-alpine
+
+        environment:
+            POSTGRES_DB: django_db
+            POSTGRES_USER: django_user
+            POSTGRES_PASSWORD_FILE: /run/secrets/db_password
+
+        secrets:
+            - db_password
+
+        volumes:
+            - postgres_data:/var/lib/postgresql/data
+
+        networks:
+            - django-overlay
+
+        deploy:
+            placement:
+                constraints:
+                    - node.hostname == swarm-manager
+
+        healthcheck:
+            test: ["CMD-SHELL", "pg_isready -U django_user -d django_db"]
+            interval: 10s
+            timeout: 5s
+            retries: 5
+            start_period: 10s
+
+    webapp:
+        image: ayqutfe/django-multistage:latest
+
+        environment:
+            DATABASE_NAME: django_db
+            DATABASE_USER: django_user
+            DATABASE_HOST: db
+            DATABASE_PORT: "5432"
+
+            DJANGO_DEBUG: "False"
+            DJANGO_ALLOWED_HOSTS: "*"
+
+        secrets:
+            - db_password
+            - django_secret_key
+
+        command: >
+            sh -c "
+            sleep 8 &&
+            python manage.py migrate &&
+            python manage.py collectstatic --noinput &&
+            gunicorn --bind 0.0.0.0:8000 core.wsgi:application
+            "
+        volumes:
+            - django_static:/app/staticfiles
+
+        networks:
+            - django-overlay
+
+        deploy:
+            replicas: 3
+
+            placement:
+                max_replicas_per_node: 1
+
+            restart_policy:
+                condition: on-failure
+
+    nginx:
+        image: nginx:alpine
+
+        ports:
+            - "80:80"
+
+        configs:
+            - source: nginx_config
+              target: /etc/nginx/conf.d/default.conf
+
+        volumes:
+            - django_static:/usr/share/nginx/html/static:ro
+
+        networks:
+            - django-overlay
+
+        deploy:
+            replicas: 1
+
+volumes:
+    postgres_data:
+    django_static:
+
+networks:
+    django-overlay:
+        external: true
+
+secrets:
+    db_password:
+        external: true
+
+    django_secret_key:
+        external: true
+
+configs:
+    nginx_config:
+        file: ./nginx/nginx.conf
