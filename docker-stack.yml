@@ -72,7 +72,7 @@ services:
             replicas: 3
 
             placement:
-                max_replicas_per_node: 1
+                max_replicas_per_node: 2
 
             restart_policy:
                 condition: on-failure
