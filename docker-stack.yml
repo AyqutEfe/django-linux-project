@@ -81,6 +81,7 @@ services:
                 parallelism: 1
                 delay: 10s
                 order: start-first
+                monitor: 30s
                 failure_action: rollback
 
     nginx:
