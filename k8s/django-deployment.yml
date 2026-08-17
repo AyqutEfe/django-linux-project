@@ -1,0 +1,45 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+    name: django-deployment
+    labels:
+        app: django-deployment
+spec:
+    replicas: 2
+    selector:
+        matchLabels:
+            app: django-deployment
+    template:
+        metadata:
+            labels:
+                app: django-deployment
+        spec:
+            containers:
+                - name: django-deployment-container
+                  imagePullPolicy: IfNotPresent
+                  image: django-multistage:v2
+                  command:
+                      [
+                          "sh",
+                          "-c",
+                          "python manage.py migrate && python manage.py collectstatic --noinput && gunicorn --bind 0.0.0.0:8000 core.wsgi:application",
+                      ]
+                  ports:
+                      - containerPort: 8000
+                  envFrom:
+                      - secretRef:
+                            name: postgres-secret
+                      - configMapRef:
+                            name: postgres-config
+                  livenessProbe:
+                      httpGet:
+                          path: /
+                          port: 8000
+                      initialDelaySeconds: 15
+                      periodSeconds: 10
+                  readinessProbe:
+                      httpGet:
+                          path: /
+                          port: 8000
+                      initialDelaySeconds: 15
+                      periodSeconds: 10
