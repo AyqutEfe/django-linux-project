@@ -1,0 +1,1009 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="tr" data-theme="dark">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Aykut Efe Çağlayan | Cloud & DevOps Engineer | TÜBİT President</title>
+  <meta name="description" content="Aykut Efe Çağlayan - Cloud & DevOps Mühendisi, TÜBİT Başkanı. Docker Swarm, Jenkins CI/CD, Kubernetes, Nginx ve Django yüksek erişilebilirlik portföyü.">
+  <meta name="keywords" content="Aykut Efe Çağlayan, Aykut Efe Caglayan, AyqutEfe, Cloud Engineer, DevOps, Docker Swarm, Jenkins, Kubernetes, Django, Nginx, TÜBİT">
+  <meta name="author" content="Aykut Efe Çağlayan">
+  
+  <!-- Open Graph / Meta -->
+  <meta property="og:title" content="Aykut Efe Çağlayan | Cloud & DevOps Portfolio">
+  <meta property="og:description" content="Ölçeklenebilir, dayanıklı ve sıfır kesintili (zero-downtime) bulut sistemleri ve CI/CD otomasyonları.">
+  <meta property="og:type" content="website">
+  <meta property="og:image" content="{% static 'images/hero-avatar.jpg' %}">
+
+  <!-- Google Fonts: Inter & JetBrains Mono -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  
+  <!-- FontAwesome Icons CDN -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+  
+  <!-- Main Stylesheet -->
+  <link rel="stylesheet" href="{% static 'css/style.css' %}">
+</head>
+<body>
+
+  <!-- Ambient Glow Background Canvas -->
+  <div class="bg-glow-container" aria-hidden="true">
+    <div class="glow-orb orb-1"></div>
+    <div class="glow-orb orb-2"></div>
+    <div class="glow-orb orb-3"></div>
+  </div>
+
+  <!-- ==========================================================================
+       NAVIGATION BAR
+       ========================================================================== -->
+  <header class="navbar">
+    <div class="container nav-container">
+      <a href="#hero" class="nav-brand" aria-label="Aykut Efe Çağlayan Home">
+        <div class="brand-badge">AEÇ</div>
+        <div class="brand-meta">
+          <span class="brand-name">Aykut Efe Çağlayan</span>
+          <span class="brand-status">
+            <span class="status-dot"></span>
+            <span>Swarm: 3 Replicas Online</span>
+          </span>
+        </div>
+      </a>
+
+      <nav>
+        <ul class="nav-links">
+          <li><a href="#about" class="nav-link" data-i18n="nav_about">Hakkımda</a></li>
+          <li><a href="#architecture" class="nav-link" data-i18n="nav_architecture">Bulut Mimarisi</a></li>
+          <li><a href="#skills" class="nav-link" data-i18n="nav_skills">Yetenekler</a></li>
+          <li><a href="#projects" class="nav-link" data-i18n="nav_projects">Projeler</a></li>
+          <li><a href="#experience" class="nav-link" data-i18n="nav_experience">Deneyim</a></li>
+          <li><a href="#terminal" class="nav-link" data-i18n="nav_terminal">Terminal</a></li>
+          <li><a href="#contact" class="nav-link" data-i18n="nav_contact">İletişim</a></li>
+        </ul>
+      </nav>
+
+      <div class="nav-actions">
+        <!-- Language Switcher -->
+        <div class="lang-switch">
+          <button class="lang-btn active" data-lang="tr" aria-label="Türkçe">TR</button>
+          <button class="lang-btn" data-lang="en" aria-label="English">EN</button>
+        </div>
+
+        <!-- Theme Toggle -->
+        <button id="theme-toggle-btn" class="btn-icon" aria-label="Toggle Theme">
+          <i class="fas fa-sun"></i>
+        </button>
+
+        <!-- CTA Button -->
+        <a href="#contact" class="nav-cta" data-i18n="nav_cta">İletişime Geç</a>
+
+        <!-- Mobile Menu Toggle -->
+        <button id="mobile-toggle" class="mobile-toggle" aria-label="Toggle Navigation">
+          <i class="fas fa-bars"></i>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    <!-- ==========================================================================
+         HERO SECTION
+         ========================================================================== -->
+    <section id="hero" class="hero-section">
+      <div class="container hero-grid">
+        <div class="hero-content">
+          <div class="hero-badge-container">
+            <span class="hero-badge" data-i18n="hero_badge_cloud">
+              <i class="fas fa-cloud"></i> Cloud & DevOps Practitioner
+            </span>
+            <span class="hero-badge highlight" data-i18n="hero_badge_tubit">
+              <i class="fas fa-users"></i> TÜBİT Topluluk Başkanı
+            </span>
+          </div>
+
+          <h1 class="hero-title">
+            <span data-i18n="hero_title_1">Ölçeklenebilir, Dayanıklı & </span>
+            <span class="text-gradient" data-i18n="hero_title_gradient">Sıfır Kesintili</span>
+            <span data-i18n="hero_title_2"> Bulut Sistemleri</span>
+          </h1>
+
+          <p class="hero-description" data-i18n="hero_desc">
+            Merhaba! Ben Aykut Efe Çağlayan. Docker Swarm konteyner orkestrasyonu, Jenkins CI/CD otomasyonları, Kubernetes, Nginx ters vekil sunucuları ve Django mimarilerinde yüksek erişilebilirliğe (HA) odaklanan bir Cloud & DevOps mühendisiyim.
+          </p>
+
+          <div class="hero-actions">
+            <a href="#projects" class="btn btn-primary" data-i18n="hero_btn_projects">
+              <i class="fas fa-rocket"></i> Projeleri İncele
+            </a>
+            <a href="#terminal" class="btn btn-terminal-trigger" data-i18n="hero_btn_terminal">
+              <i class="fas fa-terminal"></i> Bulut CLI Terminali
+            </a>
+            <button class="btn btn-secondary open-project-modal" data-project-id="swarm_ha" data-i18n="hero_btn_cv">
+              <i class="fas fa-file-code"></i> Mimari Raporu
+            </button>
+          </div>
+        </div>
+
+        <div class="hero-visual">
+          <div class="avatar-card-wrapper">
+            <!-- Floating Badges -->
+            <div class="floating-stat-badge stat-badge-1">
+              <div class="stat-badge-icon" style="color:var(--accent-cyan);"><i class="fab fa-docker"></i></div>
+              <div class="stat-badge-text">
+                <span class="stat-badge-title">Docker Swarm HA</span>
+                <span class="stat-badge-sub">3 Nodes Mesh Active</span>
+              </div>
+            </div>
+
+            <div class="floating-stat-badge stat-badge-2">
+              <div class="stat-badge-icon" style="color:var(--accent-emerald);"><i class="fas fa-shield-halved"></i></div>
+              <div class="stat-badge-text">
+                <span class="stat-badge-title">Zero-Downtime</span>
+                <span class="stat-badge-sub">100.00% Siege Verified</span>
+              </div>
+            </div>
+
+            <!-- Avatar Preview Card -->
+            <div class="avatar-card">
+              <div class="avatar-card-header">
+                <div class="window-dots">
+                  <span class="window-dot dot-red"></span>
+                  <span class="window-dot dot-yellow"></span>
+                  <span class="window-dot dot-green"></span>
+                </div>
+                <span class="window-title">aykut-efe-caglayan.cloud</span>
+                <i class="fas fa-lock" style="font-size:0.7rem; color:var(--accent-emerald);"></i>
+              </div>
+
+              <div class="avatar-image-container">
+                <img src="{% static 'images/hero-avatar.jpg' %}" alt="Aykut Efe Çağlayan - Cloud & DevOps Engineer" class="avatar-image">
+              </div>
+
+              <div class="avatar-card-footer">
+                <div class="metric-pill">
+                  <span class="metric-pill-value">3 / 3</span>
+                  <span class="metric-pill-label">Replicas</span>
+                </div>
+                <div class="metric-pill">
+                  <span class="metric-pill-value">100%</span>
+                  <span class="metric-pill-label">Uptime</span>
+                </div>
+                <div class="metric-pill">
+                  <span class="metric-pill-value">&lt; 15ms</span>
+                  <span class="metric-pill-label">Latency</span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ==========================================================================
+         LIVE METRICS BAR
+         ========================================================================== -->
+    <section class="metrics-bar-section">
+      <div class="container">
+        <div class="metrics-bar">
+          <div class="metric-card">
+            <div class="metric-icon emerald"><i class="fas fa-circle-check"></i></div>
+            <div class="metric-data">
+              <span class="metric-number">100.00%</span>
+              <span class="metric-title" data-i18n="metric_availability">Sıfır Kesinti Oranı</span>
+            </div>
+          </div>
+
+          <div class="metric-card">
+            <div class="metric-icon"><i class="fab fa-docker"></i></div>
+            <div class="metric-data">
+              <span class="metric-number">3 Replicas</span>
+              <span class="metric-title" data-i18n="metric_replicas">Aktif Swarm Kümesi</span>
+            </div>
+          </div>
+
+          <div class="metric-card">
+            <div class="metric-icon purple"><i class="fas fa-gears"></i></div>
+            <div class="metric-data">
+              <span class="metric-number">GitOps CI/CD</span>
+              <span class="metric-title" data-i18n="metric_cicd">Jenkins Otomasyon</span>
+            </div>
+          </div>
+
+          <div class="metric-card">
+            <div class="metric-icon amber"><i class="fas fa-bolt"></i></div>
+            <div class="metric-data">
+              <span class="metric-number">12 ms</span>
+              <span class="metric-title" data-i18n="metric_latency">Ortalama Yanıt Süresi</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ==========================================================================
+         INTERACTIVE ARCHITECTURE SANDBOX (LIVE SIMULATOR)
+         ========================================================================== -->
+    <section id="architecture" class="section">
+      <div class="container">
+        <div class="section-header">
+          <span class="section-tag" data-i18n="sandbox_tag">Canlı Simülasyon</span>
+          <h2 class="section-title" data-i18n="sandbox_title">Docker Swarm & Jenkins Altyapı Simülatörü</h2>
+          <p class="section-subtitle" data-i18n="sandbox_subtitle">
+            Bu projenin arkasındaki üretim mimarisini canlı olarak test edin: Siege yük testi uygulayın veya kesintisiz rolling-update sürecini tetikleyin.
+          </p>
+        </div>
+
+        <div class="sandbox-container">
+          <!-- Control Panel Header -->
+          <div class="sandbox-controls">
+            <div class="sandbox-title-area">
+              <i class="fas fa-server" style="color:var(--accent-cyan); font-size:1.2rem;"></i>
+              <strong>Cluster Topology: my-django-stack</strong>
+              <span class="sandbox-badge">Overlay: django-overlay</span>
+            </div>
+
+            <div class="sandbox-action-buttons">
+              <button id="btn-sandbox-siege" class="btn-sandbox">
+                <i class="fas fa-fire"></i> <span data-i18n="sandbox_btn_siege">Siege Yük Testi Yap</span>
+              </button>
+              <button id="btn-sandbox-rolling" class="btn-sandbox">
+                <i class="fas fa-arrows-rotate"></i> <span data-i18n="sandbox_btn_rolling">Rolling Update Tetikle</span>
+              </button>
+              <button id="btn-sandbox-failover" class="btn-sandbox">
+                <i class="fas fa-triangle-exclamation"></i> <span data-i18n="sandbox_btn_failover">Düğüm Arızası Simüle Et</span>
+              </button>
+              <button id="btn-sandbox-reset" class="btn-sandbox">
+                <i class="fas fa-rotate-left"></i> <span data-i18n="sandbox_btn_reset">Temizle</span>
+              </button>
+            </div>
+          </div>
+
+          <!-- Architecture Visualizer Diagram -->
+          <div class="topology-diagram">
+            <!-- Node: Client Traffic -->
+            <div class="node-card" id="node-client">
+              <div class="node-header">
+                <span class="node-tag">Traffic Generator</span>
+                <i class="fas fa-users" style="color:var(--accent-blue);"></i>
+              </div>
+              <div class="node-title">Client / Siege</div>
+              <div class="node-details">
+                Concurrent: 10<br>
+                Protocol: HTTP/1.1
+              </div>
+            </div>
+
+            <!-- Connector 1 -->
+            <div class="topology-connector">
+              <div class="connector-line"></div>
+              <div class="connector-packet"></div>
+            </div>
+
+            <!-- Node: Nginx Reverse Proxy -->
+            <div class="node-card" id="node-nginx">
+              <div class="node-header">
+                <span class="node-tag">Reverse Proxy</span>
+                <i class="fas fa-network-wired" style="color:var(--accent-cyan);"></i>
+              </div>
+              <div class="node-title">Nginx Web Server</div>
+              <div class="node-details">
+                Port: 80:80<br>
+                Upstream: web:8000<br>
+                Static: /usr/share/nginx/html
+              </div>
+            </div>
+
+            <!-- Connector 2 -->
+            <div class="topology-connector">
+              <div class="connector-line"></div>
+              <div class="connector-packet"></div>
+            </div>
+
+            <!-- Node: Docker Swarm Web Replicas -->
+            <div class="node-card" id="node-swarm" style="min-width:240px;">
+              <div class="node-header">
+                <span class="node-tag">Docker Swarm (3x HA)</span>
+                <i class="fab fa-docker" style="color:var(--accent-blue);"></i>
+              </div>
+              <div class="node-title">Django Web Replicas</div>
+              <div class="node-replicas-group">
+                <div class="replica-item active" id="replica-1">
+                  <span>Replica 1</span>
+                  <span class="replica-badge badge-healthy">Healthy</span>
+                </div>
+                <div class="replica-item active" id="replica-2">
+                  <span>Replica 2</span>
+                  <span class="replica-badge badge-healthy">Healthy</span>
+                </div>
+                <div class="replica-item active" id="replica-3">
+                  <span>Replica 3</span>
+                  <span class="replica-badge badge-healthy">Healthy</span>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Live Log Feed -->
+          <div class="sandbox-terminal-feed" id="sandbox-log-feed"></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ==========================================================================
+         SKILLS MATRIX SECTION
+         ========================================================================== -->
+    <section id="skills" class="section">
+      <div class="container">
+        <div class="section-header">
+          <span class="section-tag" data-i18n="skills_tag">Uzmanlık Alanları</span>
+          <h2 class="section-title" data-i18n="skills_title">Teknoloji & Yetenek Matrisi</h2>
+          <p class="section-subtitle" data-i18n="skills_subtitle">
+            Bulut altyapılarından backend servislerine ve topluluk liderliğine kadar kullanılan modern araçlar.
+          </p>
+        </div>
+
+        <!-- Filter Controls -->
+        <div class="skills-filter">
+          <button class="skill-filter-btn active" data-filter="all" data-i18n="filter_all">Tümü</button>
+          <button class="skill-filter-btn" data-filter="cloud" data-i18n="filter_cloud">Cloud & Konteyner</button>
+          <button class="skill-filter-btn" data-filter="devops" data-i18n="filter_devops">CI/CD & DevOps</button>
+          <button class="skill-filter-btn" data-filter="backend" data-i18n="filter_backend">Backend & Veritabanı</button>
+          <button class="skill-filter-btn" data-filter="linux" data-i18n="filter_linux">Linux & Ağ</button>
+          <button class="skill-filter-btn" data-filter="leadership" data-i18n="filter_leadership">Liderlik & Yönetim</button>
+        </div>
+
+        <div class="skills-grid">
+          <!-- Skill Card 1: Docker & Swarm -->
+          <div class="skill-card" data-category="cloud">
+            <div>
+              <div class="skill-top">
+                <div class="skill-icon-box"><i class="fab fa-docker"></i></div>
+                <div class="skill-info-meta">
+                  <h4>Docker & Swarm</h4>
+                  <span>Orchestration & Clustering</span>
+                </div>
+              </div>
+              <p class="skill-desc">Multi-stage Alpine imajları, 3-replika Swarm HA küme kurulumu, Overlay ağlar ve Docker Secrets mimarisi.</p>
+            </div>
+            <div class="skill-tags">
+              <span class="skill-tag">Swarm HA</span>
+              <span class="skill-tag">Multi-Stage</span>
+              <span class="skill-tag">Secrets</span>
+              <span class="skill-tag">Non-Root</span>
+            </div>
+          </div>
+
+          <!-- Skill Card 2: Jenkins CI/CD -->
+          <div class="skill-card" data-category="devops">
+            <div>
+              <div class="skill-top">
+                <div class="skill-icon-box"><i class="fas fa-code-merge"></i></div>
+                <div class="skill-info-meta">
+                  <h4>Jenkins CI/CD</h4>
+                  <span>Declarative Pipelines</span>
+                </div>
+              </div>
+              <p class="skill-desc">Checkout, Build, Tag, Push to Docker Hub ve Swarm Manager'a şifresiz SSH ile otomatik continuous deployment.</p>
+            </div>
+            <div class="skill-tags">
+              <span class="skill-tag">Jenkinsfile</span>
+              <span class="skill-tag">GitOps</span>
+              <span class="skill-tag">Docker Hub</span>
+              <span class="skill-tag">SSH Automation</span>
+            </div>
+          </div>
+
+          <!-- Skill Card 3: Kubernetes -->
+          <div class="skill-card" data-category="cloud">
+            <div>
+              <div class="skill-top">
+                <div class="skill-icon-box"><i class="fas fa-dharmachakra"></i></div>
+                <div class="skill-info-meta">
+                  <h4>Kubernetes</h4>
+                  <span>Container Scheduling</span>
+                </div>
+              </div>
+              <p class="skill-desc">Bildirimsel YAML manifestoları, Deployments, ClusterIP/NodePort Services, ConfigMaps ve PVC kalıcı depolama.</p>
+            </div>
+            <div class="skill-tags">
+              <span class="skill-tag">K8s Manifests</span>
+              <span class="skill-tag">PVC</span>
+              <span class="skill-tag">Deployments</span>
+              <span class="skill-tag">Services</span>
+            </div>
+          </div>
+
+          <!-- Skill Card 4: Python & Django -->
+          <div class="skill-card" data-category="backend">
+            <div>
+              <div class="skill-top">
+                <div class="skill-icon-box"><i class="fab fa-python"></i></div>
+                <div class="skill-info-meta">
+                  <h4>Python & Django</h4>
+                  <span>Backend Engineering</span>
+                </div>
+              </div>
+              <p class="skill-desc">Django 5.x/6.x web çatıları, Gunicorn WSGI entegrasyonu, REST API geliştirme ve dinamik secret resolver mimarisi.</p>
+            </div>
+            <div class="skill-tags">
+              <span class="skill-tag">Python 3.11</span>
+              <span class="skill-tag">Django</span>
+              <span class="skill-tag">Gunicorn</span>
+              <span class="skill-tag">REST APIs</span>
+            </div>
+          </div>
+
+          <!-- Skill Card 5: PostgreSQL & Databases -->
+          <div class="skill-card" data-category="backend">
+            <div>
+              <div class="skill-top">
+                <div class="skill-icon-box"><i class="fas fa-database"></i></div>
+                <div class="skill-info-meta">
+                  <h4>PostgreSQL & DBs</h4>
+                  <span>Data Layer</span>
+                </div>
+              </div>
+              <p class="skill-desc">PostgreSQL 16 Alpine konteynerizasyonu, kalıcı veri diskleri, sağlık denetimleri (pg_isready) ve SQLite fallback.</p>
+            </div>
+            <div class="skill-tags">
+              <span class="skill-tag">Postgres 16</span>
+              <span class="skill-tag">Volumes</span>
+              <span class="skill-tag">Healthchecks</span>
+              <span class="skill-tag">SQLite</span>
+            </div>
+          </div>
+
+          <!-- Skill Card 6: Nginx & Reverse Proxy -->
+          <div class="skill-card" data-category="linux">
+            <div>
+              <div class="skill-top">
+                <div class="skill-icon-box"><i class="fas fa-network-wired"></i></div>
+                <div class="skill-info-meta">
+                  <h4>Nginx Reverse Proxy</h4>
+                  <span>Web & Load Balancing</span>
+                </div>
+              </div>
+              <p class="skill-desc">Trafik yönlendirme, statik dosya optimizasyonu, upstream yük dengelemesi ve ters vekil sunucu güvenliği.</p>
+            </div>
+            <div class="skill-tags">
+              <span class="skill-tag">Reverse Proxy</span>
+              <span class="skill-tag">Load Balancer</span>
+              <span class="skill-tag">Static Files</span>
+            </div>
+          </div>
+
+          <!-- Skill Card 7: Linux & Bash -->
+          <div class="skill-card" data-category="linux">
+            <div>
+              <div class="skill-top">
+                <div class="skill-icon-box"><i class="fab fa-linux"></i></div>
+                <div class="skill-info-meta">
+                  <h4>Linux & Bash</h4>
+                  <span>Systems Administration</span>
+                </div>
+              </div>
+              <p class="skill-desc">Alpine Linux & Ubuntu Server yönetimi, otomasyon betikleri, sistem servisleri, SSH anahtar yönetimi ve güvenlik.</p>
+            </div>
+            <div class="skill-tags">
+              <span class="skill-tag">Alpine Linux</span>
+              <span class="skill-tag">Ubuntu</span>
+              <span class="skill-tag">Bash Shell</span>
+              <span class="skill-tag">SSH Ed25519</span>
+            </div>
+          </div>
+
+          <!-- Skill Card 8: Siege Load Testing -->
+          <div class="skill-card" data-category="devops">
+            <div>
+              <div class="skill-top">
+                <div class="skill-icon-box"><i class="fas fa-gauge-high"></i></div>
+                <div class="skill-info-meta">
+                  <h4>Siege Testing</h4>
+                  <span>Reliability Verification</span>
+                </div>
+              </div>
+              <p class="skill-desc">Canlı dağıtım esnasında eşzamanlı isteklerle sıfır kesinti testi, kullanılabilirlik metrikleri ve stres analizi.</p>
+            </div>
+            <div class="skill-tags">
+              <span class="skill-tag">Load Testing</span>
+              <span class="skill-tag">100% Availability</span>
+              <span class="skill-tag">Benchmarking</span>
+            </div>
+          </div>
+
+          <!-- Skill Card 9: TÜBİT Community Leadership -->
+          <div class="skill-card" data-category="leadership">
+            <div>
+              <div class="skill-top">
+                <div class="skill-icon-box" style="background:rgba(245, 158, 11, 0.1); color:var(--accent-amber);"><i class="fas fa-crown"></i></div>
+                <div class="skill-info-meta">
+                  <h4>TÜBİT Liderliği</h4>
+                  <span>Community & Organization</span>
+                </div>
+              </div>
+              <p class="skill-desc">500+ öğrenciden oluşan Trakya Üniversitesi Bilişim Topluluğu Başkanlığı, Zirve'26 organizasyonu ve etkinlik liderliği.</p>
+            </div>
+            <div class="skill-tags">
+              <span class="skill-tag">Topluluk Başkanı</span>
+              <span class="skill-tag">Zirve'26</span>
+              <span class="skill-tag">Organizasyon</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ==========================================================================
+         FEATURED PROJECTS SECTION
+         ========================================================================== */
+         -->
+    <section id="projects" class="section">
+      <div class="container">
+        <div class="section-header">
+          <span class="section-tag" data-i18n="projects_tag">Öne Çıkan Çalışmalar</span>
+          <h2 class="section-title" data-i18n="projects_title">Bulut & Yazılım Projeleri</h2>
+          <p class="section-subtitle" data-i18n="projects_subtitle">
+            Konteyner orkestrasyonu, sürekli entegrasyon ve dağıtım üzerine geliştirilmiş gerçek dünya uygulamaları.
+          </p>
+        </div>
+
+        <div class="projects-grid">
+          <!-- Featured Project 1: Cloud & DevOps HA Sandbox (This Project) -->
+          <div class="project-card featured-hero-project">
+            <div class="project-header-banner">
+              <div class="project-badge-bar">
+                <span class="project-type-badge">Primary Architecture</span>
+                <span style="font-family:var(--font-mono); font-size:0.75rem; color:var(--accent-emerald);">
+                  <i class="fas fa-circle-check"></i> Production Ready
+                </span>
+              </div>
+              <div class="project-visual-preview">
+                <i class="fab fa-docker"></i>
+              </div>
+              <div style="font-family:var(--font-mono); font-size:0.75rem; color:var(--text-muted);">
+                Repo: AyqutEfe/django-linux-project
+              </div>
+            </div>
+
+            <div class="project-body">
+              <div>
+                <h3 class="project-title">Cloud & DevOps High-Availability Sandbox</h3>
+                <p class="project-summary">
+                  Üretim seviyesinde Django uygulamasının Docker Swarm 3-replika mimarisinde, Jenkins CI/CD, Nginx reverse proxy ve PostgreSQL ile sıfır kesinti (zero-downtime rolling update) ile çalıştırıldığı kapsamlı altyapı.
+                </p>
+                <ul class="project-features-list">
+                  <li>3-Replika Swarm HA ve <code>order: start-first</code> kesintisiz güncelleme</li>
+                  <li>Siege yük testi ile doğrulanmış %100.00 erişilebilirlik ve 0 hata</li>
+                  <li>Docker Secrets & yetkisiz (non-root) güvenli konteyner mimarisi</li>
+                </ul>
+              </div>
+
+              <div>
+                <div class="project-tech-stack">
+                  <span class="tech-chip">Docker Swarm</span>
+                  <span class="tech-chip">Jenkins</span>
+                  <span class="tech-chip">Nginx</span>
+                  <span class="tech-chip">Django</span>
+                  <span class="tech-chip">PostgreSQL</span>
+                  <span class="tech-chip">Siege</span>
+                </div>
+
+                <div class="project-actions">
+                  <button class="btn btn-primary open-project-modal" data-project-id="swarm_ha">
+                    <i class="fas fa-diagram-project"></i> Mimari İncele
+                  </button>
+                  <a href="https://github.com/AyqutEfe" target="_blank" class="btn-project-link">
+                    <i class="fab fa-github"></i> GitHub <i class="fas fa-arrow-right"></i>
+                  </a>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Project 2: Jenkins CI/CD GitOps Pipeline -->
+          <div class="project-card">
+            <div class="project-header-banner">
+              <div class="project-badge-bar">
+                <span class="project-type-badge">CI/CD Pipeline</span>
+                <i class="fas fa-gears" style="color:var(--accent-cyan);"></i>
+              </div>
+              <div class="project-visual-preview">
+                <i class="fab fa-jenkins"></i>
+              </div>
+            </div>
+
+            <div class="project-body">
+              <div>
+                <h3 class="project-title">Jenkins Multi-Stage GitOps Pipeline</h3>
+                <p class="project-summary">
+                  Declarative Jenkinsfile ile GitHub commit'lerini otomatik dinleyen, multi-stage Docker build derleyen, Docker Hub'a <code>v1.0.BUILD</code> olarak push eden ve Swarm Manager'a SSH ile dağıtan tam otomatik CI/CD süreci.
+                </p>
+              </div>
+
+              <div>
+                <div class="project-tech-stack">
+                  <span class="tech-chip">Jenkins</span>
+                  <span class="tech-chip">Jenkinsfile</span>
+                  <span class="tech-chip">Docker Hub</span>
+                  <span class="tech-chip">SSH Ed25519</span>
+                </div>
+
+                <div class="project-actions">
+                  <button class="btn-project-link open-project-modal" data-project-id="jenkins_cicd">
+                    Detayları Görüntüle <i class="fas fa-arrow-right"></i>
+                  </button>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Project 3: Kubernetes Workload Orchestration -->
+          <div class="project-card">
+            <div class="project-header-banner">
+              <div class="project-badge-bar">
+                <span class="project-type-badge">Cloud Native</span>
+                <i class="fas fa-dharmachakra" style="color:var(--accent-cyan);"></i>
+              </div>
+              <div class="project-visual-preview">
+                <i class="fas fa-cubes"></i>
+              </div>
+            </div>
+
+            <div class="project-body">
+              <div>
+                <h3 class="project-title">Kubernetes Workload Orchestration</h3>
+                <p class="project-summary">
+                  Django backend ve PostgreSQL veritabanı servislerinin Kubernetes üzerinde bildirimsel YAML manifestoları, PVC kalıcı diskleri, Secret ve ConfigMap mekanizmalarıyla orkestrasyonu.
+                </p>
+              </div>
+
+              <div>
+                <div class="project-tech-stack">
+                  <span class="tech-chip">Kubernetes</span>
+                  <span class="tech-chip">Deployments</span>
+                  <span class="tech-chip">Services</span>
+                  <span class="tech-chip">ConfigMaps</span>
+                </div>
+
+                <div class="project-actions">
+                  <button class="btn-project-link open-project-modal" data-project-id="k8s_cluster">
+                    Detayları Görüntüle <i class="fas fa-arrow-right"></i>
+                  </button>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Project 4: TÜBİT Leadership & Zirve'26 -->
+          <div class="project-card">
+            <div class="project-header-banner">
+              <div class="project-badge-bar">
+                <span class="project-type-badge" style="background:rgba(245,158,11,0.15); color:var(--accent-amber); border-color:rgba(245,158,11,0.3);">Community Summit</span>
+                <i class="fas fa-crown" style="color:var(--accent-amber);"></i>
+              </div>
+              <div class="project-visual-preview">
+                <i class="fas fa-users-line" style="color:var(--accent-amber);"></i>
+              </div>
+            </div>
+
+            <div class="project-body">
+              <div>
+                <h3 class="project-title">TÜBİT Liderliği & Zirve'26 Zirvesi</h3>
+                <p class="project-summary">
+                  Trakya Üniversitesi Bilişim ve İnovasyon Topluluğu (TÜBİT) Başkanı olarak; 7. Liderlik, Kariyer ve İnovasyon Zirvesi "Zirve'26"nın yönetimi, teknoloji oturumları ve 500+ öğrenci katılımının koordinasyonu.
+                </p>
+              </div>
+
+              <div>
+                <div class="project-tech-stack">
+                  <span class="tech-chip">Leadership</span>
+                  <span class="tech-chip">Tech Summit</span>
+                  <span class="tech-chip">Event Directing</span>
+                  <span class="tech-chip">Public Speaking</span>
+                </div>
+
+                <div class="project-actions">
+                  <button class="btn-project-link open-project-modal" data-project-id="tubit_leadership">
+                    Detayları Görüntüle <i class="fas fa-arrow-right"></i>
+                  </button>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Project 5: Blockchain 101 Sandbox -->
+          <div class="project-card">
+            <div class="project-header-banner">
+              <div class="project-badge-bar">
+                <span class="project-type-badge">Web3 & Blockchain</span>
+                <i class="fas fa-link" style="color:var(--accent-cyan);"></i>
+              </div>
+              <div class="project-visual-preview">
+                <i class="fas fa-cube"></i>
+              </div>
+            </div>
+
+            <div class="project-body">
+              <div>
+                <h3 class="project-title">Coderspace Blockchain 101 Sandbox</h3>
+                <p class="project-summary">
+                  Coderspace Blockchain 101 Bootcamp programı kapsamında akıllı sözleşme mimarileri, EVM çalışma prensipleri ve dağıtık defter teknolojileri üzerine geliştirilen eğitim ve uygulama çalışmaları.
+                </p>
+              </div>
+
+              <div>
+                <div class="project-tech-stack">
+                  <span class="tech-chip">Blockchain</span>
+                  <span class="tech-chip">Coderspace</span>
+                  <span class="tech-chip">Smart Contracts</span>
+                  <span class="tech-chip">EVM</span>
+                </div>
+
+                <div class="project-actions">
+                  <button class="btn-project-link open-project-modal" data-project-id="blockchain_101">
+                    Detayları Görüntüle <i class="fas fa-arrow-right"></i>
+                  </button>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ==========================================================================
+         INTERACTIVE TERMINAL / CLI SECTION
+         ========================================================================== -->
+    <section id="terminal" class="section">
+      <div class="container">
+        <div class="section-header">
+          <span class="section-tag" data-i18n="terminal_tag">İnteraktif Konsol</span>
+          <h2 class="section-title" data-i18n="terminal_title">Cloud Engineering CLI</h2>
+          <p class="section-subtitle" data-i18n="terminal_subtitle">
+            Klavye veya hızlı butonları kullanarak Aykut Efe hakkında detaylı sistem sorguları çalıştırın.
+          </p>
+        </div>
+
+        <div class="terminal-wrapper">
+          <div class="terminal-window">
+            <div class="terminal-top-bar">
+              <div class="window-dots">
+                <span class="window-dot dot-red"></span>
+                <span class="window-dot dot-yellow"></span>
+                <span class="window-dot dot-green"></span>
+              </div>
+              <span class="terminal-title">
+                <i class="fas fa-terminal"></i> bash - aykut@cloud-node: ~
+              </span>
+              <div class="terminal-actions-bar">
+                <button class="terminal-quick-btn" data-cmd="help">help</button>
+                <button class="terminal-quick-btn" data-cmd="whoami">whoami</button>
+                <button class="terminal-quick-btn" data-cmd="swarm">swarm</button>
+                <button class="terminal-quick-btn" data-cmd="siege">siege</button>
+                <button class="terminal-quick-btn" data-cmd="sudo hire-me">sudo hire-me</button>
+              </div>
+            </div>
+
+            <div class="terminal-body" id="terminal-screen">
+              <div class="terminal-welcome">
+                <div>Welcome to <strong>Aykut Efe Çağlayan's Cloud Node CLI</strong> [v2.4.0-release]</div>
+                <div>Type <span style="color:var(--accent-cyan); font-weight:bold;">help</span> to see available commands or click quick action buttons above.</div>
+                <div style="color:var(--text-muted); font-size:0.75rem; margin-top:4px;">OS: Alpine Linux 3.19 (x86_64) | Swarm: Active | Jenkins: Online</div>
+              </div>
+
+              <div class="terminal-history" id="terminal-history"></div>
+
+              <div class="terminal-input-row">
+                <span class="terminal-prompt-user">aykut</span>@<span class="terminal-prompt-host">cloud-node</span>:<span class="terminal-prompt-path">~</span>$&nbsp;
+                <input type="text" id="terminal-input" class="terminal-input" placeholder="Type a command (e.g. help, whoami, swarm, skills)..." autocomplete="off" spellcheck="false">
+                <span class="terminal-cursor"></span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ==========================================================================
+         EXPERIENCE & LEADERSHIP TIMELINE
+         ========================================================================== -->
+    <section id="experience" class="section">
+      <div class="container">
+        <div class="section-header">
+          <span class="section-tag" data-i18n="experience_tag">Kariyer & Yol Haritası</span>
+          <h2 class="section-title" data-i18n="experience_title">Deneyim & Liderlik</h2>
+          <p class="section-subtitle" data-i18n="experience_subtitle">
+            Teknik gelişim ve topluluk yönetimi yolculuğumdaki kilometre taşları.
+          </p>
+        </div>
+
+        <div class="timeline-container">
+          <!-- Timeline Item 1 -->
+          <div class="timeline-item">
+            <div class="timeline-dot"></div>
+            <div class="timeline-card">
+              <div class="timeline-meta">
+                <h3 class="timeline-role">Cloud Engineering & DevOps Stajyeri</h3>
+                <span class="timeline-period">2026 - Günümüz</span>
+              </div>
+              <div class="timeline-org">Cloud & DevOps Sandbox Initiative</div>
+              <p class="timeline-desc">
+                Modern bulut mimarilerini, konteyner orkestrasyonunu (Docker Swarm), Jenkins CI/CD pipeline'larını ve sıfır kesintili güncelleme stratejilerini uygulamalı olarak deneyimleme ve geliştirme süreci.
+              </p>
+              <div class="timeline-highlights">
+                <div class="timeline-highlight-item">Docker Swarm 3-replika yüksek erişilebilirlik (HA) mimarisinin kurulması.</div>
+                <div class="timeline-highlight-item">Jenkins ile GitHub -> Build -> Docker Hub -> Swarm Manager dağıtım otomasyonu.</div>
+                <div class="timeline-highlight-item">Siege yük testleri ile canlı dağıtım esnasında %100 kesintisizliğin kanıtlanması.</div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Timeline Item 2 -->
+          <div class="timeline-item leadership">
+            <div class="timeline-dot"></div>
+            <div class="timeline-card">
+              <div class="timeline-meta">
+                <h3 class="timeline-role">Topluluk Başkanı (President)</h3>
+                <span class="timeline-period" style="background:rgba(245,158,11,0.12); color:var(--accent-amber);">2025 - Günümüz</span>
+              </div>
+              <div class="timeline-org">TÜBİT (Trakya Üniversitesi Bilişim ve İnovasyon Topluluğu)</div>
+              <p class="timeline-desc">
+                500+ aktif öğrenci üyesi bulunan bilişim topluluğuna liderlik ederek yazılım, bulut bilişim, kariyer oturumları ve hackathon organizasyonlarının yönetimi.
+              </p>
+              <div class="timeline-highlights">
+                <div class="timeline-highlight-item">7. Liderlik, Kariyer ve İnovasyon Zirvesi "Zirve'26" organizasyon direktörlüğü ve açılış konuşması.</div>
+                <div class="timeline-highlight-item">Sektör liderleri ve mühendislerle öğrencileri buluşturan teknik atölyelerin düzenlenmesi.</div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Timeline Item 3 -->
+          <div class="timeline-item">
+            <div class="timeline-dot"></div>
+            <div class="timeline-card">
+              <div class="timeline-meta">
+                <h3 class="timeline-role">Blockchain 101 Bootcamp Mezunu</h3>
+                <span class="timeline-period">Aralık 2025</span>
+              </div>
+              <div class="timeline-org">Coderspace</div>
+              <p class="timeline-desc">
+                Merkeziyetsiz defter teknolojileri, akıllı sözleşmeler, konsensüs mekanizmaları ve Web3 mimarileri üzerine yoğun eğitim programı başarıyla tamamlandı.
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ==========================================================================
+         CONTACT SECTION
+         ========================================================================== -->
+    <section id="contact" class="section">
+      <div class="container">
+        <div class="section-header">
+          <span class="section-tag" data-i18n="contact_tag">Bağlantı Kur</span>
+          <h2 class="section-title" data-i18n="contact_title">Birlikte Çalışalım</h2>
+          <p class="section-subtitle" data-i18n="contact_subtitle">
+            Cloud & DevOps projeleri, staj/iş fırsatları veya topluluk etkinlikleri için iletişime geçebilirsiniz.
+          </p>
+        </div>
+
+        <div class="contact-grid">
+          <!-- Contact Info Card -->
+          <div class="contact-info-card">
+            <h3>Aykut Efe Çağlayan</h3>
+            <p>
+              Bulut altyapıları, CI/CD otomasyonları ve modern yazılım mimarileri hakkında konuşmak için her zaman açığım.
+            </p>
+
+            <div class="contact-channels">
+              <a href="mailto:aykutefecaglayan@gmail.com" class="contact-channel-item">
+                <div class="channel-icon"><i class="fas fa-envelope"></i></div>
+                <div class="channel-info">
+                  <h4>E-posta</h4>
+                  <span>aykutefecaglayan@gmail.com</span>
+                </div>
+              </a>
+
+              <a href="https://github.com/AyqutEfe" target="_blank" class="contact-channel-item">
+                <div class="channel-icon"><i class="fab fa-github"></i></div>
+                <div class="channel-info">
+                  <h4>GitHub</h4>
+                  <span>github.com/AyqutEfe</span>
+                </div>
+              </a>
+
+              <a href="https://hub.docker.com/u/ayqutfe" target="_blank" class="contact-channel-item">
+                <div class="channel-icon"><i class="fab fa-docker"></i></div>
+                <div class="channel-info">
+                  <h4>Docker Hub</h4>
+                  <span>hub.docker.com/u/ayqutfe</span>
+                </div>
+              </a>
+
+              <a href="https://www.linkedin.com/in/aykut-efe-caglayan" target="_blank" class="contact-channel-item">
+                <div class="channel-icon"><i class="fab fa-linkedin-in"></i></div>
+                <div class="channel-info">
+                  <h4>LinkedIn</h4>
+                  <span>linkedin.com/in/aykut-efe-caglayan</span>
+                </div>
+              </a>
+            </div>
+
+            <button id="btn-copy-email" class="btn btn-secondary" style="width:100%;">
+              <i class="fas fa-copy"></i> <span data-i18n="copy_email_btn">E-postayı Kopyala</span>
+            </button>
+          </div>
+
+          <!-- Contact Form Card -->
+          <div class="contact-form-card">
+            <div id="form-status-alert" class="form-status-alert"></div>
+            
+            <form id="portfolio-contact-form">
+              <div class="form-group">
+                <label for="contact-name" class="form-label" data-i18n="form_name_label">Adınız Soyadınız</label>
+                <input type="text" id="contact-name" class="form-control" placeholder="Adınız Soyadınız" required>
+              </div>
+
+              <div class="form-group">
+                <label for="contact-email" class="form-label" data-i18n="form_email_label">E-posta Adresiniz</label>
+                <input type="email" id="contact-email" class="form-control" placeholder="ornek@alanadi.com" required>
+              </div>
+
+              <div class="form-group">
+                <label for="contact-message" class="form-label" data-i18n="form_message_label">Mesajınız</label>
+                <textarea id="contact-message" class="form-control" placeholder="Mesajınızı buraya yazabilirsiniz..." required></textarea>
+              </div>
+
+              <button type="submit" class="btn btn-primary" style="width:100%;" data-i18n="form_btn_submit">
+                <i class="fas fa-paper-plane"></i> Mesajı Gönder
+              </button>
+            </form>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- ==========================================================================
+       FOOTER
+       ========================================================================== -->
+  <footer class="footer">
+    <div class="container footer-content">
+      <div class="footer-brand">
+        <div class="brand-badge" style="width:32px; height:32px; font-size:0.85rem;">AEÇ</div>
+        <span style="font-weight:700; font-size:0.95rem;">Aykut Efe Çağlayan</span>
+      </div>
+
+      <div class="footer-copy">
+        &copy; 2026 Aykut Efe Çağlayan • Powered by Django, Gunicorn, Nginx & Docker Swarm
+      </div>
+
+      <div class="footer-links">
+        <a href="https://github.com/AyqutEfe" target="_blank" class="footer-link" aria-label="GitHub"><i class="fab fa-github"></i></a>
+        <a href="https://hub.docker.com/u/ayqutfe" target="_blank" class="footer-link" aria-label="Docker Hub"><i class="fab fa-docker"></i></a>
+        <a href="https://www.linkedin.com/in/aykut-efe-caglayan" target="_blank" class="footer-link" aria-label="LinkedIn"><i class="fab fa-linkedin"></i></a>
+        <a href="mailto:aykutefecaglayan@gmail.com" class="footer-link" aria-label="Email"><i class="fas fa-envelope"></i></a>
+      </div>
+    </div>
+  </footer>
+
+  <!-- ==========================================================================
+       MODAL DIALOG
+       ========================================================================== -->
+  <div id="project-modal" class="modal-backdrop" role="dialog" aria-modal="true">
+    <div class="modal-content">
+      <button id="modal-close-btn" class="modal-close-btn" aria-label="Close modal">&times;</button>
+      <div style="margin-bottom:1rem;">
+        <span id="modal-project-tag" class="section-tag" style="margin-bottom:0.5rem;">Architecture Deep Dive</span>
+        <h3 id="modal-project-title" style="font-size:1.5rem; font-weight:800; color:var(--text-primary);">Project Title</h3>
+      </div>
+      <div id="modal-project-body" style="color:var(--text-secondary); line-height:1.7;"></div>
+    </div>
+  </div>
+
+  <!-- Main JavaScript File -->
+  <script src="{% static 'js/main.js' %}"></script>
+</body>
+</html>

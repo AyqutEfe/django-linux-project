@@ -34,15 +34,15 @@ def get_secret(secret_name, env_name=None):
     return None
 
 
-SECRET_KEY = get_secret("django_secret_key", "DJANGO_SECRET_KEY")
+SECRET_KEY = get_secret("django_secret_key", "DJANGO_SECRET_KEY") or os.environ.get("DJANGO_SECRET_KEY") or "django-insecure-aykut-efe-portfolio-dev-key-2026"
 
 
 
-DEBUG = os.getenv("DJANGO_DEBUG", "False").lower() == "true"
+DEBUG = os.getenv("DJANGO_DEBUG", "True").lower() == "true"
 
 ALLOWED_HOSTS = os.getenv(
     "DJANGO_ALLOWED_HOSTS",
-    "localhost,127.0.0.1"
+    "localhost,127.0.0.1,testserver,*"
 ).split(",")
 
 
@@ -72,7 +72,7 @@ ROOT_URLCONF = 'core.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [],
+        'DIRS': [BASE_DIR / 'templates'],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
@@ -90,16 +90,35 @@ WSGI_APPLICATION = 'core.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/6.0/ref/settings/#databases
 
-DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.postgresql',
-        'NAME': os.environ.get('POSTGRES_DB', 'django_db'),
-        'USER': os.environ.get('POSTGRES_USER', 'django_user'),
-        'PASSWORD': os.environ.get('POSTGRES_PASSWORD', 'django_password'),
-        'HOST': os.environ.get('POSTGRES_HOST', 'db'),
-        'PORT': os.environ.get('POSTGRES_PORT', '5432'),
+postgres_host = os.environ.get('POSTGRES_HOST') or os.environ.get('DATABASE_HOST')
+postgres_db = os.environ.get('POSTGRES_DB') or os.environ.get('DATABASE_NAME')
+postgres_user = os.environ.get('POSTGRES_USER') or os.environ.get('DATABASE_USER')
+postgres_password = get_secret("db_password", "POSTGRES_PASSWORD") or os.environ.get("DATABASE_PASSWORD", "django_password")
+postgres_port = os.environ.get('POSTGRES_PORT') or os.environ.get('DATABASE_PORT', '5432')
+
+use_sqlite = os.environ.get('USE_SQLITE', '').lower() == 'true'
+
+try:
+    if use_sqlite or not postgres_host:
+        raise ImportError("Use SQLite fallback")
+    import psycopg2  # type: ignore # noqa: F401
+    DATABASES = {
+        'default': {
+            'ENGINE': 'django.db.backends.postgresql',
+            'NAME': postgres_db or 'django_db',
+            'USER': postgres_user or 'django_user',
+            'PASSWORD': postgres_password,
+            'HOST': postgres_host,
+            'PORT': postgres_port,
+        }
     }
-}
+except (ImportError, Exception):
+    DATABASES = {
+        'default': {
+            'ENGINE': 'django.db.backends.sqlite3',
+            'NAME': BASE_DIR / 'db.sqlite3',
+        }
+    }
 
 # Password validation
 # https://docs.djangoproject.com/en/6.0/ref/settings/#auth-password-validators
@@ -135,7 +154,11 @@ USE_TZ = True
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/6.0/howto/static-files/
 
-STATIC_URL = 'static/'
-
+STATIC_URL = '/static/'
 
 STATIC_ROOT = BASE_DIR / 'staticfiles'
+
+STATICFILES_DIRS = [
+    BASE_DIR / 'static',
+]
+

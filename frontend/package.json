@@ -1,7 +1,19 @@
 {
-  "name": "django-frontend",
+  "name": "aykut-caglayan-portfolio-frontend",
   "version": "1.0.0",
+  "description": "Portfolio frontend for Aykut Efe Çağlayan - Cloud & DevOps Engineer",
   "scripts": {
-    "build": "mkdir -p dist && echo '/* Sahte CSS ve JS Dosyalari */' > dist/bundle.js"
-  }
+    "build": "mkdir -p dist/css dist/js dist/images && echo '/* Aykut Efe Caglayan Portfolio Bundle */' > dist/bundle.js"
+  },
+  "keywords": [
+    "cloud",
+    "devops",
+    "portfolio",
+    "docker",
+    "swarm",
+    "jenkins",
+    "django"
+  ],
+  "author": "Aykut Efe Çağlayan",
+  "license": "MIT"
 }
