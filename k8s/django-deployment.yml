@@ -17,7 +17,7 @@ spec:
             containers:
                 - name: django-deployment-container
                   imagePullPolicy: IfNotPresent
-                  image: django-multistage:v3
+                  image: ayqutfe/django-multistage:v3
                   command:
                       [
                           "sh",
