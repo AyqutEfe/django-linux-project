@@ -4,10 +4,16 @@ metadata:
   name: django-ingress
   annotations:
     nginx.ingress.kubernetes.io/rewrite-target: /
+    cert-manager.io/cluster-issuer: "selfsigned-issuer"
+    nginx.ingress.kubernetes.io/ssl-redirect: "true"
 spec:
   ingressClassName: nginx
+  tls:
+  - hosts:
+    - django.portvmind.local
+    secretName: django-tls-secret
   rules:
-    - host: django.portvmind.local # Eğer bir domain yoksa burayı ALB'nin DNS adresi yapabilir veya host satırını tamamen silebilirsin.
+    - host: django.portvmind.local
       http:
         paths:
           - path: /
