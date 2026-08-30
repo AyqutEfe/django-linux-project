@@ -1,7 +1,7 @@
 replicaCount: 2
 
 image:
-    repository: django-multistage
+    repository: ayqutfe/django-multistage
     pullPolicy: IfNotPresent
     tag: "v3"
 
