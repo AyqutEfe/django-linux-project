@@ -6,9 +6,14 @@ metadata:
 spec:
   project: default
   source:
-    repoURL: https://github.com/AyqutEfe/django-linux-project
-    targetRevision: main
-    path: k8s
+    repoURL: https://AyqutEfe.github.io/django-linux-project
+    chart: django-chart
+    targetRevision: "0.1.0"
+    helm:
+      values: |
+        image:
+          repository: django-multistage
+          tag: "v3"
   destination:
     server: https://kubernetes.default.svc
     namespace: default
