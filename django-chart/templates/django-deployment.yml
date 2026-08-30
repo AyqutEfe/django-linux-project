@@ -17,7 +17,7 @@ spec:
             containers:
                 - name: django-deployment-container
                   imagePullPolicy: IfNotPresent
-                  image: django-multistage:v3
+                  image: "{{ .Values.image.repository }}:{{ .Values.image.tag | default .Chart.AppVersion }}"
                   resources:
                     {{- toYaml .Values.resources | nindent 20 }}
                   command:
