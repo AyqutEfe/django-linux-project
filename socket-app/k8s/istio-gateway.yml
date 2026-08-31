@@ -1,0 +1,43 @@
+# ------------------------------------------------------------------
+# Gateway: Istio'nun ingress gateway'inde 8765 portunu TCP olarak açar.
+# Bu, Nginx Ingress'in yaptığı L7 (HTTP host/path) yönlendirmeden farklı
+# olarak, L4 (ham TCP) seviyesinde çalışır — long-lived socket bağlantıları
+# için Nginx'in idle-timeout sorununu bu şekilde aşıyoruz.
+# ------------------------------------------------------------------
+apiVersion: networking.istio.io/v1
+kind: Gateway
+metadata:
+  name: socket-app-gateway
+  namespace: socket-system
+spec:
+  selector:
+    istio: ingressgateway   # mevcut istio-ingressgateway pod'unu hedefler
+  servers:
+    - port:
+        number: 8765
+        name: tcp-socket
+        protocol: TCP
+      hosts:
+        - "*"   # Bu portta host bazlı ayrım yapmıyoruz (TCP seviyesinde host header kavramı yok)
+---
+# ------------------------------------------------------------------
+# VirtualService: Gateway'e gelen TCP trafiğini socket-app-service'e yönlendirir.
+# ------------------------------------------------------------------
+apiVersion: networking.istio.io/v1
+kind: VirtualService
+metadata:
+  name: socket-app-vs
+  namespace: socket-system
+spec:
+  hosts:
+    - "*"
+  gateways:
+    - socket-app-gateway
+  tcp:
+    - match:
+        - port: 8765
+      route:
+        - destination:
+            host: socket-app-service.socket-system.svc.cluster.local
+            port:
+              number: 8765

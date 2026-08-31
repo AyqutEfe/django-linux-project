@@ -1,0 +1,35 @@
+# Bu EnvoyFilter, socket-app-gateway'in TCP proxy filtresindeki idle timeout değerini
+# açıkça tanımlar. Varsayılan Envoy davranışı zaten uzun (yaklaşık 1 saat) olduğu için
+# zorunlu değildir, ancak görev gereksinimindeki "Istio: TCP Idle Timeout parametrelerini
+# göz önünde bulundur" ipucunu karşılamak ve bağlantı davranışını açıkça belgelemek için
+# bilinçli olarak tanımlanmıştır.
+#
+# idleTimeout: 30 dakika olarak ayarlandı — 10+ dakikalık test senaryosunu rahatça
+# karşılar, aynı zamanda kopan/unutulan bağlantıların sonsuza kadar açık kalıp
+# kaynak tüketmesini de engeller.
+
+apiVersion: networking.istio.io/v1alpha3
+kind: EnvoyFilter
+metadata:
+  name: socket-app-tcp-idle-timeout
+  namespace: socket-system
+spec:
+  workloadSelector:
+    labels:
+      istio: ingressgateway
+  configPatches:
+    - applyTo: NETWORK_FILTER
+      match:
+        context: GATEWAY
+        listener:
+          portNumber: 8765
+          filterChain:
+            filter:
+              name: "envoy.filters.network.tcp_proxy"
+      patch:
+        operation: MERGE
+        value:
+          name: envoy.filters.network.tcp_proxy
+          typed_config:
+            "@type": type.googleapis.com/envoy.extensions.filters.network.tcp_proxy.v3.TcpProxy
+            idle_timeout: 1800s   # 30 dakika

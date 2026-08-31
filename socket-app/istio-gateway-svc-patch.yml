@@ -1,0 +1,16 @@
+# Bu manifest, mevcut istio-ingressgateway Service'ini DEĞİŞTİRMEZ (silip yeniden oluşturmaz),
+# sadece "kubectl patch" ile üzerine yeni bir port ekler.
+#
+# Kullanım:
+#   kubectl patch service istio-ingressgateway -n istio-system --patch-file istio-gateway-svc-patch.yml
+#
+# Bu komut, istio-ingressgateway Service'inin PORT(S) listesine 8765/TCP portunu ekler.
+# Mevcut 80/443 portlarına (Django Nginx Ingress için ayrı bir Ingress Controller kullanıyorsanız
+# bu Istio Gateway'i etkilemez) dokunmaz.
+
+spec:
+  ports:
+    - name: tcp-socket
+      port: 8765
+      targetPort: 8765
+      protocol: TCP
